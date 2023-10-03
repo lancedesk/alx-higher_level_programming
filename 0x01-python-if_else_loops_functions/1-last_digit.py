@@ -2,7 +2,8 @@
 import random
 number = random.randint(-10000, 10000)
 number_string = str(number)
-l_number = int(number_string[-1])  # l_number is last number
+# Ensuring l_number is always positive
+l_number = abs(int(number_string[-1]))  # l_number is last number
 
 if (number < 0):
     l_number *= -1
