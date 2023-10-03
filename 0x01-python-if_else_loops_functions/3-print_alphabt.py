@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 # ASCII values for lowercase alphabet
 for char in range(97, 123):
     # Skip ASCII values for 'q' and 'e'
