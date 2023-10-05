@@ -17,13 +17,13 @@ if __name__ == "__main__":
         sys.exit(1)
     elif(arg_no == 4):
         if(operator == '+'):
-            print("{:d} + {:d} = {:d}".format(a, b, add(a, b)))
+            print("{:d} {} {:d} = {:d}".format(a, operator, b, add(a, b)))
         elif(operator == '-'):
-            print("{:d} - {:d} = {:d}".format(a, b, sub(a, b)))
+            print("{:d} {} {:d} = {:d}".format(a, operator, b, sub(a, b)))
         elif(operator == '*'):
-            print("{:d} * {:d} = {:d}".format(a, b, mul(a, b)))
+            print("{:d} {} {:d} = {:d}".format(a, operator, b, mul(a, b)))
         elif(operator == '/'):
-            print("{:d} / {:d} = {:d}".format(a, b, div(a, b)))
+            print("{:d} {} {:d} = {:d}".format(a, operator, b, div(a, b)))
         else:
             print("Unknown operator. Available operators: +, -, * and /")
             sys.exit(1)
