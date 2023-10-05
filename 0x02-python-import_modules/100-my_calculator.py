@@ -7,7 +7,7 @@ arg_no = len(sys.argv)
 program_name = sys.argv[0]
 
 if (arg_no == 4):
-    operator = sys.argv[2]
+    operator = sys.argv[2][0]
     a = int(sys.argv[1])
     b = int(sys.argv[3])
 
