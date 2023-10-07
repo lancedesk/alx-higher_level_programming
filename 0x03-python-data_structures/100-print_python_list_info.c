@@ -7,7 +7,7 @@
  * Description: This function takes a PyObject list as input and prints
  *              the size, allocated memory, and the type of each element
  *              in the list. It provides information about the Python list
- *              structure using GNU89-compatible syntax.
+ *              structure
  */
 
 void print_python_list_info(PyObject *p)
