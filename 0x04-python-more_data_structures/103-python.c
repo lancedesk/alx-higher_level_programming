@@ -14,7 +14,6 @@ void print_python_list(PyObject *p);
  * and the first 10 bytes of the bytes object.
  * If it's not a valid bytes object, it prints an error message.
  */
-
 void print_python_bytes(PyObject *p)
 {
 	printf("[.] bytes object info\n");
@@ -45,22 +44,31 @@ void print_python_bytes(PyObject *p)
  * If an element is a bytes object, it calls the print_python_byte
  * function to print information about the bytes object.
  */
-
 void print_python_list(PyObject *p)
 {
 	Py_ssize_t size, i;
-	PyObject *item;
+	PyObject *item, *iterator;
 
 	size = PyList_Size(p);
+	iterator = PyObject_GetIter(p);
+
+	if (iterator == NULL) {
+		printf("[ERROR] Invalid List Object\n");
+		return;
+	}
+
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %ld\n", size);
 	printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
 
-	for (i = 0; i < size; ++i)
-	{
-		item = PyList_GetItem(p, i);
-		if (item != NULL && PyBytes_Check(item))
-			print_python_bytes(item);
+	while ((item = PyIter_Next(iterator)) != NULL) {
 		printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
+		if (PyBytes_Check(item))
+			print_python_bytes(item);
+		Py_XDECREF(item);
+		++i;
 	}
+
+	Py_DECREF(iterator);
 }
+
