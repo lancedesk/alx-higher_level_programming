@@ -14,18 +14,21 @@ void print_python_list(PyObject *p);
  * and the first 10 bytes of the bytes object.
  * If it's not a valid bytes object, it prints an error message.
  */
+
 void print_python_bytes(PyObject *p)
 {
 	printf("[.] bytes object info\n");
 	if (PyBytes_Check(p))
 	{
 		Py_ssize_t size;
-		char *data = PyBytes_AsStringAndSize(p, &size);
+		/* Use PyBytes_AsString directly */
+		char *data = PyBytes_AsString(p);
+		/* Get size using PyBytes_Size */
+		size = PyBytes_Size(p);
 		printf("  size: %ld\n", size);
 		printf("  trying string: %s\n", data);
 		printf("  first 10 bytes: ");
-		Py_ssize_t i;
-		for (i = 0; i < size && i < 10; ++i)
+		for (Py_ssize_t i = 0; i < size && i < 10; ++i)
 			printf("%02x ", (unsigned char)data[i]);
 		printf("\n");
 	}
@@ -41,34 +44,34 @@ void print_python_bytes(PyObject *p)
  *
  * This function prints the size, allocated memory,
  * and the type name of each element in the list @p.
- * If an element is a bytes object, it calls the print_python_byte
+ * If an element is a bytes object, it calls the print_python_bytes
  * function to print information about the bytes object.
  */
+
 void print_python_list(PyObject *p)
 {
 	Py_ssize_t size, i;
-	PyObject *item, *iterator;
+	PyObject *item;
 
 	size = PyList_Size(p);
-	iterator = PyObject_GetIter(p);
-
-	if (iterator == NULL) {
-		printf("[ERROR] Invalid List Object\n");
-		return;
-	}
-
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %ld\n", size);
 	printf("[*] Allocated = %ld\n", ((PyListObject *)p)->allocated);
 
-	while ((item = PyIter_Next(iterator)) != NULL) {
-		printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
-		if (PyBytes_Check(item))
-			print_python_bytes(item);
-		Py_XDECREF(item);
-		++i;
+	for (i = 0; i < size; ++i)
+	{
+		item = PyList_GetItem(p, i);
+		if (item != NULL)
+		{
+			/* Check if the item is a bytes object and print */
+			if (PyBytes_Check(item))
+				print_python_bytes(item);
+			printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
+		}
+		else
+		{
+			printf("Element %ld: [ERROR] Invalid Object\n", i);
+		}
 	}
-
-	Py_DECREF(iterator);
 }
 
