@@ -17,13 +17,14 @@ void print_python_bytes(PyObject *p)
 	printf("[.] bytes object info\n");
 	if (PyBytes_Check(p))
 	{
-		printf("  size: %ld\n", PyBytes_Size(p));
-		printf("  trying string: %s\n", PyBytes_AsString(p));
+		Py_ssize_t size;
+		char *data = PyBytes_AsStringAndSize(p, &size);
+		printf("  size: %ld\n", size);
+		printf("  trying string: %s\n", data);
 		printf("  first 10 bytes: ");
-		unsigned long size = PyBytes_Size(p);
-		unsigned long i;
+		Py_ssize_t i;
 		for (i = 0; i < size && i < 10; ++i)
-			printf("%02x ", (unsigned char)PyBytes_AsString(p)[i]);
+			printf("%02x ", (unsigned char)data[i]);
 		printf("\n");
 	}
 	else
@@ -55,8 +56,8 @@ void print_python_list(PyObject *p)
 	for (i = 0; i < size; ++i)
 	{
 		item = PyList_GetItem(p, i);
-		printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
-		if (PyBytes_Check(item))
+		if (item != NULL && PyBytes_Check(item))
 			print_python_bytes(item);
+		printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
 	}
 }
