@@ -72,17 +72,17 @@ class SinglyLinkedList:
             new_node.next_node = self.head
             self.head = new_node
         else:
-            current = self.head
-            while current.next_node is not None and current.next_node.data < value:
-                current = current.next_node
-            new_node.next_node = current.next_node
-            current.next_node = new_node
+            curr = self.head  # curr -> current
+            while curr.next_node is not None and curr.next_node.data < value:
+                curr = curr.next_node
+            new_node.next_node = curr.next_node
+            curr.next_node = new_node
 
     def __str__(self):
         """Print the entire list."""
         result = []
-        current = self.head
-        while current is not None:
-            result.append(str(current.data))
-            current = current.next_node
+        curr = self.head
+        while curr is not None:
+            result.append(str(curr.data))
+            curr = curr.next_node
         return '\n'.join(result)
