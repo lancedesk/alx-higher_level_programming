@@ -1,13 +1,9 @@
 #!/usr/bin/python3
-"""
-This module defines a Rectangle class with private width & height attributes.
-"""
-
 
 class Rectangle:
     """
-    This class represents a rectangle and provides methods to calculate its area,
-    perimeter, and print its representation using '#'. It also provides a formal
+    Represents a rectangle and provides methods to calculate its area,
+    perimeter, & print its representation using '#'. It also provides a formal
     string representation of the rectangle.
     """
 
