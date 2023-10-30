@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 
-
 class Rectangle:
     """
-    Represents a rectangle and provides methods to calculate its area,
-    perimeter, & print its representation using '#'.
-    It also provides a formal
+    This class represents a rectangle and provides methods to calculate its area,
+    perimeter, and print its representation using '#'. It also provides a formal
     string representation of the rectangle.
     """
 
@@ -109,12 +107,15 @@ class Rectangle:
         """
         if self.__width == 0 or self.__height == 0:
             return ""
-        rectangle = []
+
+        rectangle = ""
+
         for i in range(self.__height):
-            [rectangle.append('#') for j in range(self.__width)]
-            if i != self.__height - 1:
-                rectangle.append("\n")
-        return "".join(rectangle)
+            rectangle += "#" * self.__width
+            if i < self.__height - 1:
+                rectangle += "\n"
+
+        return rectangle
 
     def __repr__(self):
         """
