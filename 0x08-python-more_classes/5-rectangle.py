@@ -6,8 +6,8 @@ This module defines a Rectangle class with private width & height attributes.
 
 class Rectangle:
     """
-    Represents a rectangle & provides methods to calculate its area & perimeter.
-    
+    Reps a rectangle & provides methods to calculate its area & perimeter.
+
     Attributes:
         number_of_instances (int): Class attribute to keep track
         of the number of instances created.
