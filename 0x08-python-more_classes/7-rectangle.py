@@ -6,19 +6,11 @@ This module defines a Rectangle class with private width & height attributes.
 
 class Rectangle:
     """
-    Reps a rectangle and provides methods to calculate its area and perimeter.
-    
-    Attributes:
-        width (int): Width of the rectangle (private attribute).
-        height (int): Height of the rectangle (private attribute).
-        number_of_instances (int): Class attribute
-        to keep track of the number of instances created.
-        print_symbol (str or any): Class attribute
-        to store the symbol for string representation.
+    Defines a Rectangle class with private width & height attributes.
     """
 
-    number_of_instances = 0
-    print_symbol = "#"
+    number_of_instances = 0  # Keep track of the number of instances created.
+    print_symbol = "#"  # Store the symbol for string representation.
 
     def __init__(self, width=0, height=0):
         """
@@ -28,9 +20,9 @@ class Rectangle:
             width (int, optional): The width of the rectangle. Defaults to 0.
             height (int, optional): The height of the rectangle. Defaults to 0.
         """
-        self.width = width
-        self.height = height
-        Rectangle.number_of_instances += 1
+        type(self).number_of_instances += 1  # Increment number of instances.
+        self.width = width  # Private attribute for width.
+        self.height = height  # Private attribute for height.
 
     @property
     def width(self):
@@ -40,7 +32,7 @@ class Rectangle:
         Returns:
             int: The width of the rectangle.
         """
-        return self.__width
+        return (self.__width)
 
     @width.setter
     def width(self, value):
@@ -68,7 +60,7 @@ class Rectangle:
         Returns:
             int: The height of the rectangle.
         """
-        return self.__height
+        return (self.__height)
 
     @height.setter
     def height(self, value):
@@ -95,7 +87,7 @@ class Rectangle:
         Returns:
             int: The area of the rectangle.
         """
-        return self.__width * self.__height
+        return (self.__width * self.__height)
 
     def perimeter(self):
         """
@@ -104,7 +96,9 @@ class Rectangle:
         Returns:
             int: The perimeter of the rectangle.
         """
-        return 2 * (self.__width + self.__height)
+        if self.__width == 0 or self.__height == 0:
+            return (0)
+        return ((self.__width * 2) + (self.__height * 2))
 
     def __str__(self):
         """
@@ -115,9 +109,14 @@ class Rectangle:
             using the character(s) stored in print_symbol.
         """
         if self.__width == 0 or self.__height == 0:
-            return ""
-        symbol_line = str(Rectangle.print_symbol) * self.__width
-        return "\n".join([symbol_line for _ in range(self.__height)])
+            return ("")
+        rectangle = []
+        r = rectangle  # r for rectangle
+        for i in range(self.__height):
+            [r.append(str(self.print_symbol)) for j in range(self.__width)]
+            if i != self.__height - 1:
+                r.append("\n")
+        return ("".join(r))
 
     def __repr__(self):
         """
@@ -126,7 +125,9 @@ class Rectangle:
         Returns:
             str: Formal string representation of the rectangle.
         """
-        return "Rectangle({}, {})".format(self.__width, self.__height)
+        r = "Rectangle(" + str(self.__width)
+        r += ", " + str(self.__height) + ")"
+        return (r)
 
     def __del__(self):
         """
@@ -134,5 +135,5 @@ class Rectangle:
         when an instance of Rectangle is deleted
         and decrement the number_of_instances.
         """
+        type(self).number_of_instances -= 1
         print("Bye rectangle...")
-        Rectangle.number_of_instances -= 1
