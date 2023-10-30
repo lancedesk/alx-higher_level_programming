@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-This module defines the Rectangle class with private width and height attributes.
+This module defines a Rectangle class with private width & height attributes.
 """
+
 
 class Rectangle:
     """
