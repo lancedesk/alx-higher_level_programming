@@ -1,31 +1,30 @@
 #!/usr/bin/python3
-"""
-This module defines a Rectangle class with private width & height attributes.
-"""
+"""                                                                             
+This module defines a Rectangle class with private width & height attributes.   
+""" 
 
 
 class Rectangle:
     """
-    Rectangle class with private width and height attributes.
+    This class represents a rectangle and provides methods to calculate its area,
+    perimeter, and print its representation using '#'.
     """
 
     def __init__(self, width=0, height=0):
         """
-        Initializes a new Rectangle instance.
+        Initializes a new Rectangle instance with optional width and height.
 
         Args:
             width (int, optional): The width of the rectangle. Defaults to 0.
             height (int, optional): The height of the rectangle. Defaults to 0.
         """
-        # Set the private width attribute to the given width
         self.width = width
-        # Set the private height attribute to the given height
         self.height = height
 
     @property
     def width(self):
         """
-        Getter method for width.
+        Getter method for width attribute.
 
         Returns:
             int: The width of the rectangle.
@@ -35,7 +34,7 @@ class Rectangle:
     @width.setter
     def width(self, value):
         """
-        Setter method for width.
+        Setter method for width attribute.
 
         Args:
             value (int): The new width value.
@@ -44,19 +43,16 @@ class Rectangle:
             TypeError: If width is not an integer.
             ValueError: If width is less than 0.
         """
-        # Check if the input value is an integer
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
-        # Check if the input value is non-negative
         if value < 0:
             raise ValueError("width must be >= 0")
-        # Set the private width attribute to the input value
         self.__width = value
 
     @property
     def height(self):
         """
-        Getter method for height.
+        Getter method for height attribute.
 
         Returns:
             int: The height of the rectangle.
@@ -66,7 +62,7 @@ class Rectangle:
     @height.setter
     def height(self, value):
         """
-        Setter method for height.
+        Setter method for height attribute.
 
         Args:
             value (int): The new height value.
@@ -75,13 +71,10 @@ class Rectangle:
             TypeError: If height is not an integer.
             ValueError: If height is less than 0.
         """
-        # Check if the input value is an integer
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
-        # Check if the input value is non-negative
         if value < 0:
             raise ValueError("height must be >= 0")
-        # Set the private height attribute to the input value
         self.__height = value
 
     def area(self):
@@ -113,13 +106,9 @@ class Rectangle:
         """
         if self.__width == 0 or self.__height == 0:
             return ""
-        return "\n".join(["#" * self.__width for _ in range(self.__height)])
-
-    def __repr__(self):
-        """
-        Returns a formal string representation of the rectangle.
-
-        Returns:
-            str: Formal string representation of the rectangle.
-        """
-        return "Rectangle({}, {})".format(self.__width, self.__height)
+        rect = []
+        for i in range(self.__height):
+            [rect.append('#') for j in range(self.__width)]
+            if i != self.__height - 1:
+                rect.append("\n")
+        return "".join(rect)
