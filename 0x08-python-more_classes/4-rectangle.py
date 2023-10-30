@@ -3,8 +3,9 @@
 
 class Rectangle:
     """
-    This class represents a rectangle and provides methods to calculate its area,
-    perimeter, and print its representation using '#'. It also provides a formal
+    Represents a rectangle and provides methods to calculate its area,
+    perimeter, & print its representation using '#'.
+    It also provides a formal
     string representation of the rectangle.
     """
 
@@ -27,7 +28,7 @@ class Rectangle:
         Returns:
             int: The width of the rectangle.
         """
-        return (self.__width)
+        return self.__width
 
     @width.setter
     def width(self, value):
@@ -57,7 +58,7 @@ class Rectangle:
         Returns:
             int: The height of the rectangle.
         """
-        return (self.__height)
+        return self.__height
 
     @height.setter
     def height(self, value):
@@ -86,7 +87,7 @@ class Rectangle:
         Returns:
             int: The area of the rectangle.
         """
-        return (self.__width * self.__height)
+        return self.__width * self.__height
 
     def perimeter(self):
         """
@@ -97,7 +98,7 @@ class Rectangle:
         """
         if self.__width == 0 or self.__height == 0:
             return 0
-        return (2 * (self.__width + self.__height))
+        return 2 * (self.__width + self.__height)
 
     def __str__(self):
         """
@@ -107,15 +108,13 @@ class Rectangle:
             str: String representation of the rectangle using '#'.
         """
         if self.__width == 0 or self.__height == 0:
-            return ("")
-
+            return ""
         rectangle = []
-
         for i in range(self.__height):
             [rectangle.append('#') for j in range(self.__width)]
             if i != self.__height - 1:
                 rectangle.append("\n")
-        return ("".join(rectangle))
+        return "".join(rectangle)
 
     def __repr__(self):
         """
@@ -124,7 +123,4 @@ class Rectangle:
         Returns:
             str: Formal string representation of the rectangle.
         """
-        rectangle = "Rectangle(" + str(self.__width)
-        rectangle += ", " + str(self.__height) + ")"
-
-        return (rectangle)
+        return "Rectangle({}, {})".format(self.__width, self.__height)
