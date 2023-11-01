@@ -1,4 +1,4 @@
-#include "Python.h"
+#include <Python.h>
 
 /**
  * print_python_string - Prints info about Python strings.
