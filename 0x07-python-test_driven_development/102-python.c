@@ -1,4 +1,4 @@
-#include "Python.h"
+#include "/usr/include/python3.8/Python.h"
 
 /**
  * print_python_string - Prints info about Python strings.
@@ -8,7 +8,7 @@
 void print_python_string(PyObject *p)
 {
 	long int length;
-	char *sting_input;
+	const char *string_input;
 
 	fflush(stdout);
 
