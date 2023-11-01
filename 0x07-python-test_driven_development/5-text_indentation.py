@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+This module provides a function to format text by adding 2 new lines after each '.', '?' and ':' character.
+"""
+
 
 def text_indentation(text):
     """
