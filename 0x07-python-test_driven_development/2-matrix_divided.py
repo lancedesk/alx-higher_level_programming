@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+This module provides functions for matrix operations,
+including matrix division and element validation.
+"""
+
 
 def is_valid_element(elem):
     """
