@@ -1,5 +1,9 @@
 #!/usr/bin/python3
+"""
+This module provides a function to perform matrix multiplication using NumPy.
+"""
 import numpy as np
+
 
 def lazy_matrix_mul(m_a, m_b):
     """
