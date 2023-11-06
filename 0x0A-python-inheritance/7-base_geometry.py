@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
 Module: 7-base_geometry
-Defines a class BaseGeometry with public methods area() and integer_validator().
+Defines a class BaseGeometry with public methods area()
+and integer_validator().
 """
 
 
@@ -22,7 +23,7 @@ class BaseGeometry:
     def integer_validator(self, name, value):
         """
         Validates the given value.
-        
+
         Args:
             name (str): The name of the value being validated.
             value (int): The value to be validated.
