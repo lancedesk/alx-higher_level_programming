@@ -7,7 +7,7 @@ Contains the definition of the MyList class.
 
 class MyList(list):
     """
-    A custom class inheriting from the list class with additional functionality.
+    Custom class inheriting from the list class with additional functionality.
     """
 
     def __init__(self):
