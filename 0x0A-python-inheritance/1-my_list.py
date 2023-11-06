@@ -10,6 +10,12 @@ class MyList(list):
     A custom class inheriting from the list class with additional functionality.
     """
 
+    def __init__(self):
+        """
+        Initializes a new instance of MyList.
+        """
+        super().__init__()
+
     def print_sorted(self):
         """
         Prints the list, but sorted in ascending order.
