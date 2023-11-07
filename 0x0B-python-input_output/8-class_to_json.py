@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Module to provide a function that serializes an instance of a class into a dictionary
+Module to provide a function that serializes
+an instance of a class into a dictionary
 with simple data structures for JSON serialization.
 """
 
