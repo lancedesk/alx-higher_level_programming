@@ -22,7 +22,6 @@ class Student:
         self.last_name = last_name
         self.age = age
 
-
     def to_json(self, attrs=None):
         """
         Retrieves a dictionary representation of a Student instance.
@@ -42,7 +41,6 @@ class Student:
                 if hasattr(self, attr):
                     filtered_dict[attr] = getattr(self, attr)
             return filtered_dict
-
 
     def reload_from_json(self, json):
         """
