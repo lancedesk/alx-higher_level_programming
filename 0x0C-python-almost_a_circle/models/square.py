@@ -35,3 +35,13 @@ class Square(Rectangle):
         y = self.y
         size = self.width  # width and height are the same for a square
         return "[Square] ({}) {}/{} - {}".format(d, x, y, size)
+
+    def update(self, *args, **kwargs):
+        """Update the square attributes."""
+        if args:
+            attrs = ["id", "size", "x", "y"]
+            for i, arg in enumerate(args):
+                setattr(self, attrs[i], arg)
+        elif kwargs:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
