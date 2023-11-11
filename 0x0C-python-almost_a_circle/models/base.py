@@ -2,6 +2,7 @@
 """Module containing the Base class for managing id attribute."""
 import json
 import csv
+import turtle
 
 
 class Base:
@@ -140,3 +141,35 @@ class Base:
                 return instance_list
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def draw(cls, list_rectangles, list_squares):
+        """Draw rectangles and squares using Turtle graphics."""
+        screen = turtle.Screen()
+        screen.bgcolor("white")
+
+        # Draw rectangles
+        for rectangle in list_rectangles:
+            turtle_rectangle = turtle.Turtle()
+            turtle_rectangle.speed(1)  # Adjust the drawing speed if needed
+            turtle_rectangle.penup()
+            turtle_rectangle.setpos(rectangle.x, rectangle.y)
+            turtle_rectangle.pendown()
+            for _ in range(2):
+                turtle_rectangle.forward(rectangle.width)
+                turtle_rectangle.left(90)
+                turtle_rectangle.forward(rectangle.height)
+                turtle_rectangle.left(90)
+
+        # Draw squares
+        for square in list_squares:
+            turtle_square = turtle.Turtle()
+            turtle_square.speed(1)  # Adjust the drawing speed if needed
+            turtle_square.penup()
+            turtle_square.setpos(square.x, square.y)
+            turtle_square.pendown()
+            for _ in range(4):
+                turtle_square.forward(square.size)
+                turtle_square.left(90)
+
+        screen.mainloop()
