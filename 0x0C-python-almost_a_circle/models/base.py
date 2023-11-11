@@ -33,6 +33,13 @@ class Base:
         sorted_list = sorted(list_dictionaries, key=lambda x: x.get('id', 0))
         return json.dumps(sorted_list)
 
+    @staticmethod
+    def from_json_string(json_string):
+        """Return the list of dictionaries represented by json_string."""
+        if json_string is None or len(json_string) == 0:
+            return []
+        return json.loads(json_string)
+
     @classmethod
     def save_to_file(cls, list_objs):
         """Save the JSON string representation of list_objs to a file."""
