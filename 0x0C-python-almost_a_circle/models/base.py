@@ -62,3 +62,16 @@ class Base:
         # Write the JSON string to the file
         with open(filename, 'w') as file:
             file.write(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Return an instance with all attributes already set."""
+        if cls.__name__ == 'Rectangle':
+            dummy_instance = cls(1, 1)  # A Rectangle with default values
+        elif cls.__name__ == 'Square':
+            dummy_instance = cls(1)  # Create a Square with default values
+        else:
+            dummy_instance = cls()  # Generic instance with default values
+
+        dummy_instance.update(**dictionary)  # Update with real values
+        return dummy_instance
