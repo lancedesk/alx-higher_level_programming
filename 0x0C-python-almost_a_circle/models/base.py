@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module containing the Base class for managing id attribute."""
 import json
+import csv
 
 
 class Base:
@@ -86,6 +87,56 @@ class Base:
                 json_string = file.read()
                 dict_list = cls.from_json_string(json_string)
                 instance_list = [cls.create(**d) for d in dict_list]
+                return instance_list
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Save the CSV representation of list_objs to a file."""
+        if list_objs is None:
+            list_objs = []
+
+        # Get the class name (assuming all elements in list_objs
+        # are of the same class)
+        class_name = cls.__name__
+
+        # Create the filename
+        filename = "{}.csv".format(class_name)
+
+        # Open the file for writing
+        with open(filename, 'w', newline='') as file:
+            writer = csv.writer(file)
+
+            for obj in list_objs:
+                if class_name == 'Rectangle':
+                    row = [obj.id, obj.width, obj.height, obj.x, obj.y]
+                elif class_name == 'Square':
+                    row = [obj.id, obj.size, obj.x, obj.y]
+
+                writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Return a list of instances from a CSV file."""
+        filename = "{}.csv".format(cls.__name__)
+
+        try:
+            with open(filename, 'r', newline='') as file:
+                reader = csv.reader(file)
+
+                instance_list = []
+                for row in reader:
+                    if len(row) == 5:  # Check if the row has enough elements
+                        r0, r1, r2, r3, r4 = map(int, row)
+
+                        if cls.__name__ == 'Rectangle':
+                            instance = cls(r0, r1, r2, r3, r4)
+                        elif cls.__name__ == 'Square':
+                            instance = cls(r0, r1, r2, r3)
+
+                        instance_list.append(instance)
+
                 return instance_list
         except FileNotFoundError:
             return []
