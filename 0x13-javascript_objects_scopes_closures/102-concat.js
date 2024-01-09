@@ -1,11 +1,6 @@
 #!/usr/bin/node
 const fs = require('fs');
 
-if (process.argv.length !== 5) {
-  console.error('Usage: ./102-concat.js fileA fileB fileC');
-  process.exit(1);
-}
-
 const [, , fileA, fileB, fileC] = process.argv;
 
 try {
@@ -14,8 +9,6 @@ try {
   const concatenatedContent = `${contentA}${contentB}`;
 
   fs.writeFileSync(fileC, concatenatedContent);
-
-  console.log(`Files ${fileA} and ${fileB} successfully concatenated to ${fileC}`);
 } catch (err) {
   console.error(`Error: ${err.message}`);
   process.exit(1);
