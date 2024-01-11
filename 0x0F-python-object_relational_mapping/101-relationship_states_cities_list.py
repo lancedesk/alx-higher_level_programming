@@ -22,7 +22,12 @@ def list_states_and_cities(username, password, db_name):
     session = Session()
 
     # Query to get all State objects with their corresponding City objects
-    states_cities = session.query(State).order_by(State.id, City.id).all()
+    states_cities = (
+        session.query(State)
+        .outerjoin(City)
+        .order_by(State.id, City.id)
+        .all()
+    )
 
     # Print the results
     for state in states_cities:
