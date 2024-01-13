@@ -1,4 +1,13 @@
 #!/usr/bin/python3
+"""
+List all cities of a state from the database (safe from SQL injection).
+Parameters:
+    - username: MySQL username
+    - password: MySQL password
+    - database: Name of the database
+    - state_name: Name of the state to filter cities
+"""
+
 import MySQLdb
 import sys
 
