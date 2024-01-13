@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+"""
+List all states from the 'states' table in a MySQL database.
+Parameters:
+    - username: MySQL username
+    - password: MySQL password
+    - database: Name of the database
+"""
+
 import MySQLdb
 import sys
 
