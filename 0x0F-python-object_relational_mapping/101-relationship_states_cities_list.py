@@ -14,8 +14,9 @@ from sqlalchemy.orm import sessionmaker
 def list_states_and_cities(username, password, db_name):
     """List all State objects and their corresponding City objects."""
     # Create a SQLAlchemy engine
-    engine = create_engine('mysql+mysqldb_name://{}:{}@localhost/{}'.
-                           format(username, password, db_name), pool_pre_ping=True)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
+                           .format(username, password, db_name),
+                           pool_pre_ping=True)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
