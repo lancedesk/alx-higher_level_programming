@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Filter and display values in the 'states' table matching the provided state name.
+Filter and display values in the 'states' table
+matching the provided state name.
 Parameters:
     - username: MySQL username
     - password: MySQL password
