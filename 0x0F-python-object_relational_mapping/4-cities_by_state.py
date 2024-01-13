@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+"""
+List all cities from the database by state.
+Parameters:
+    - username: MySQL username
+    - password: MySQL password
+    - database: Name of the database
+"""
+
 import MySQLdb
 import sys
 
