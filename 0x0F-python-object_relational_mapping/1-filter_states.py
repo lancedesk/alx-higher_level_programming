@@ -1,4 +1,13 @@
 #!/usr/bin/python3
+"""
+Filter and list states with names starting with 'N'
+from the 'states' table in a MySQL database.
+Parameters:
+    - username: MySQL username
+    - password: MySQL password
+    - database: Name of the database
+"""
+
 import MySQLdb
 import sys
 
@@ -13,7 +22,10 @@ def filter_states(username, password, db_name):
     cursor = db.cursor()
 
     # Execute the query to select distinct states starting with 'N'
-    query = "SELECT DISTINCT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
+    query = "SELECT DISTINCT * " \
+        "FROM states " \
+        "WHERE name LIKE 'N%' " \
+        "ORDER BY id ASC"
     cursor.execute(query)
 
     # Fetch all rows
