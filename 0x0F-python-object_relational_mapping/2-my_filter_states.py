@@ -1,4 +1,13 @@
 #!/usr/bin/python3
+"""
+Filter and display values in the 'states' table matching the provided state name.
+Parameters:
+    - username: MySQL username
+    - password: MySQL password
+    - database: Name of the database
+    - state_name: Name of the state to filter and display
+"""
+
 import MySQLdb
 import sys
 
