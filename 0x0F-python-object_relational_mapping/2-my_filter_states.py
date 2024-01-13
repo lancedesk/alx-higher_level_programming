@@ -23,7 +23,7 @@ def filter_states(username, password, db_name, state_name):
     cursor = db.cursor()
 
     # Format and execute the query to select states with the given name
-    query = ("SELECT * FROM states WHERE name = '{}' "
+    query = ("SELECT * FROM states WHERE name LIKE '{:s}' "
              "ORDER BY id ASC").format(state_name)
     cursor.execute(query)
 
