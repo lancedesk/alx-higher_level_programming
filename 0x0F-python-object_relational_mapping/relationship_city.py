@@ -2,6 +2,7 @@
 """
 Module that contains the class definition of a City.
 """
+
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from relationship_state import Base
