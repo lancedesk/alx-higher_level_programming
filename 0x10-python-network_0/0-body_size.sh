@@ -9,5 +9,5 @@ if [ -z "$1" ]; then
 fi
 
 # Use curl to get the size of the body and display it
-size=$(curl -sI "$1" | grep -i "Content-Length" | awk '{print $2}')
+size=$(curl -sI "$1" | grep -i "Content-Length" | cut -d " " -f2)
 echo "$size"
