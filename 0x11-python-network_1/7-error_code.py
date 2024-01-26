@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Sends a request to a URL and displays the body of the response. 
+Sends a request to a URL and displays the body of the response.
 If the HTTP status code is greater than or equal to 400,
 prints: Error code: followed by the value of the HTTP status code.
 """
