@@ -2,30 +2,29 @@
 
 const request = require('request');
 
-function print_characters(characters, index) {
-    request(characters[index], function (error, response, body) {
-        if (error) {
-            console.error(error);
-        } else {
-            const character_info = JSON.parse(body);
-            console.log(character_info.name);
-            
-            if (index + 1 < characters.length) {
-                print_characters(characters, index + 1);
-            }
-        }
-    });
+function printCharacters (characters, index) {
+  request(characters[index], function (error, response, body) {
+    if (error) {
+      console.error(error);
+    } else {
+      const characterInfo = JSON.parse(body);
+      console.log(characterInfo.name);
+
+      if (index + 1 < characters.length) {
+        printCharacters(characters, index + 1);
+      }
+    }
+  });
 }
 
-const file_path = process.argv[2]
-const url = 'https://swapi-api.alx-tools.com/api/films/' + file_path;
+const filePath = process.argv[2];
+const url = 'https://swapi-api.alx-tools.com/api/films/' + filePath;
 
 request(url, function (error, response, body) {
-    if (error) {
-        console.error(error);
-    } else {
-        const data = JSON.parse(body);
-        
-        print_characters(data.characters, 0);
-    }
+  if (error) {
+    console.error(error);
+  } else {
+    const data = JSON.parse(body);
+    printCharacters(data.characters, 0);
+  }
 });
